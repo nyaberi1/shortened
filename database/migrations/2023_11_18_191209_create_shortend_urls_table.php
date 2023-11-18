@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('shortend_urls', function (Blueprint $table) {
             $table->id();
             $table->text('url');
-            $table->string('slug');
+            $table->string('slug')->nullable()->unique();
             $table->softDeletes();
             $table->timestamps();
         });

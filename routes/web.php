@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShortendUrlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/', [ShortendUrlController::class, 'create'])->name('shortend.create');
+Route::post('/shortendurl', [ShortendUrlController::class, 'store'])->name('shortend.store');
+Route::get('/{slug}', [ShortendUrlController::class, 'show'])->name('shortend.slug');
+Route::get('/edit/{slug}', [ShortendUrlController::class, 'edit'])->name('shortend.edit');
